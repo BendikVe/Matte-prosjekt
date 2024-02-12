@@ -1,0 +1,35 @@
+#Oppgave 1a)
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def f(t):
+    if t < 0:
+        return 0
+    elif 0 <= t < 1:
+        return 2 * t
+    elif 1 <= t < 2:
+        return 3 - t
+    elif 2 <= t < 4:
+        return 1
+    elif 4 <= t < 5:
+        return 5 - t
+    else:
+        return 0
+
+
+x = np.linspace(0, 7, 1000)
+
+
+y = np.array([f(t) for t in x])
+
+
+plt.plot(x, y, label='$f(t)$')
+plt.xlabel('$t$')
+plt.ylabel('$f(t)$')
+plt.title('Grafen til funksjonen $f(t)$')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+#Oppgave 1b)
