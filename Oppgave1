@@ -2,7 +2,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 def f(t):
     if t < 0:
         return 0
@@ -16,8 +15,8 @@ def f(t):
         return 5 - t
     else:
         return 0
-
-
+                       
+  
 x = np.linspace(0, 7, 1000)
 
 
@@ -33,3 +32,44 @@ plt.legend()
 plt.show()
 
 #Oppgave 1b)
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Definerer funksjonen f(t)
+def f(t):
+    if t < 0:
+        return 0
+    elif 0 <= t < 1:
+        return 2 * t
+    elif 1 <= t < 2:
+        return 3 - t
+    elif 2 <= t < 4:
+        return 1
+    elif 4 <= t < 5:
+        return 5 - t
+    else:
+        return 0
+
+# Funksjon for å beregne Laplacetransformasjonen F(s) numerisk
+def F(s):
+    integral = 0
+    dt = 0.01  # Endre dette for å få høyere nøyaktighet
+    for t in np.arange(0, 7, dt):
+        integral += f(t) * np.exp(-s * t) * dt
+    return integral
+
+# Genererer s-verdier
+s_values = np.linspace(0, 5, 100)
+
+# Beregner tilhørende F(s)-verdier ved å bruke Laplacetransformasjonen
+F_values = np.array([F(s) for s in s_values])
+
+# Tegner grafen
+plt.plot(s_values, F_values, label='$F(s)$')
+plt.xlabel('$s$')
+plt.ylabel('$F(s)$')
+plt.title('Laplacetransformasjonen $F(s)$ av funksjonen $f(t)$')
+plt.grid(True)
+plt.legend()
+plt.show()
+
